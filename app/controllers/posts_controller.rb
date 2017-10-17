@@ -28,6 +28,13 @@ class PostsController < ApplicationController
 		@post.update(post_params_permitted) ? redirect_to(@post) : render('edit_post_form')
 	end
 
+	def destroy
+		@post = Post.find(params[:id])
+		@post.destroy
+		redirect_to(posts_path)
+	end
+
+	private
 	def post_params_permitted
 		params.require(:post).permit(:title, :content, :datetime)
 	end
