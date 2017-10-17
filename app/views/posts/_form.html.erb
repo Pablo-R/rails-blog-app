@@ -1,0 +1,17 @@
+<%= form_with(model: @post, local: true) do |post_form| %>
+	<p>
+		<%= post_form.label :title %><br>
+		<%= post_form.text_field :title %>
+	</p>
+	<p>
+		<%= post_form.label :content %><br>
+		<%= post_form.text_area :content %>
+	</p>
+	<p>
+		<%= post_form.label :datetime %><br>
+		<%= post_form.datetime_select :datetime %>
+	</p>
+	<p>
+		<%= post_form.submit %>
+	</p>
+<% end %>
