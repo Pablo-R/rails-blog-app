@@ -10,6 +10,10 @@ class PostsController < ApplicationController
 		@post.save ? redirect_to(@post) : render('new_post_form')
 	end
 
+	def show
+		@post = Post.find(params[:id])
+	end
+
 	def post_params_permitted
 		params.require(:post).permit(:title, :content, :datetime)
 	end
