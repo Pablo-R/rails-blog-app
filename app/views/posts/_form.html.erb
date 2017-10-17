@@ -1,4 +1,17 @@
 <%= form_with(model: @post, local: true) do |post_form| %>
+	<% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@post.errors.count, "error") %> forbid
+        this post from being saved:
+      </h2>
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>	
 	<p>
 		<%= post_form.label :title %><br>
 		<%= post_form.text_field :title %>
