@@ -11,6 +11,8 @@ gem 'rails', '~> 5.1.4'
 
 # Use Devise to control user-authentication
 gem 'devise', '~> 4.3.0'
+# Use Cancancan to control user-authorization
+gem 'cancancan'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
