@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nick: 
+  content: 
+  datetime: 2017-10-18 05:06:09
+  post: one
+
+two:
+  nick: 
+  content: 
+  datetime: 2017-10-18 05:06:09
+  post: two
