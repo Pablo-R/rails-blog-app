@@ -6,6 +6,13 @@ class CommentsController < ApplicationController
 		redirect_to(@post)
 	end
 
+	def destroy
+		@post = Post.find(params[:post_id])
+		@comment = Comment.find_by(post_id: @post, id: params[:id])
+		@comment.destroy
+		redirect_to(@post)
+	end
+
 	private
 	def comment_params_permitted
 		params.require(:comment).permit(:nick, :content, :datetime)

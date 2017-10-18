@@ -29,6 +29,9 @@
 		<strong>Datetime:</strong>
 		<%= post_comment.datetime %>
 	</p>
+  <p>
+	<%= link_to 'Delete Comment', [@post, post_comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>	
 <% end %>
 
 
