@@ -1,17 +1,36 @@
 <p>
-  <strong>Title:</strong>
-  <%= @post.title %>
+	<strong>Title:</strong>
+	<%= @post.title %>
 </p>
  
 <p>
-  <strong>Content:</strong>
-  <%= @post.content %>
+	<strong>Content:</strong>
+	<%= @post.content %>
 </p>
 
 <p>
 	<strong>Date:</strong>
 	<%= @post.datetime %>
 </p>
+
+<h2>Comments</h2>
+<% @post.comments.each do |post_comment| %>
+	<p>
+		<strong>Nick:</strong>
+		<%= post_comment.nick %>
+	</p>
+ 
+	<p>
+		<strong>Comment:</strong>
+		<%= post_comment.content %>
+	</p>
+
+	<p>
+		<strong>Datetime:</strong>
+		<%= post_comment.datetime %>
+	</p>
+<% end %>
+
 
 <h2>Add comment</h2>
 <%= form_with(model: [@post, Comment.new], local: true) do |post_comments_form| %>
@@ -34,5 +53,5 @@
 
 
 <p>
-  <%= link_to 'Back', controller: 'posts' %>
+	<%= link_to 'Back', controller: 'posts' %>
 </p>
