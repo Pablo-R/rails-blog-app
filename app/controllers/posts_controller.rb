@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
-
+	load_resource
 	def index
 		@posts = Post.all
 	end
 
 	def new
 		@post = Post.new
+		authorize! :new, @post, :message => "You are not authorized!"
 		render('new_post_form')
 	end
 
