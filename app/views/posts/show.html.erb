@@ -36,7 +36,7 @@
 
 
 <h2>Add comment</h2>
-<%= form_with(model: [@post, Comment.new], local: true) do |post_comments_form| %>
+<%= form_with(model: [@post, @comment], local: true) do |post_comments_form| %>
 	<p>
 		<%= post_comments_form.label :nick %><br>
 		<%= post_comments_form.text_field :nick %>
@@ -53,7 +53,6 @@
 		<%= post_comments_form.submit %>
 	</p>
 <% end %>
-
 
 <p>
 	<%= link_to 'Back', controller: 'posts' %>

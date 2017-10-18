@@ -1,6 +1,11 @@
 <h1>Blog App</h1>
 
 <%= link_to('Create a new post', new_post_path) %>
+
+<br>
+<%= link_to('Sign out', destroy_user_session_path , method: :delete ) if user_signed_in? %>
+<br>
+
 <h2>Post List</h2>
 
 <table>
@@ -22,3 +27,5 @@
 		</tr>
 	<% end %>
 </table>
+
+<%= link_to 'Back', root_path %>
