@@ -10,12 +10,13 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		@post = Post.new(post_params_permitted)
+		@post = current_user.posts.new(post_params_permitted)
 		@post.save ? redirect_to(@post) : render('new_post_form')
 	end
 
 	def show
 		@post = Post.find(params[:id])
+		@comment = Comment.new
 	end
 
 	def edit
