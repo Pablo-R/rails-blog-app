@@ -1,6 +1,6 @@
 <h1>Blog App</h1>
 
-<%= link_to('Create a new post', new_post_path) %>
+<%= link_to('Create a new post', new_post_path) if can? :create, @post %>
 
 <br>
 <%= link_to('Sign out', destroy_user_session_path , method: :delete ) if user_signed_in? %>
