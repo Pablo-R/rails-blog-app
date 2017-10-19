@@ -1,43 +1,39 @@
 class PostsController < ApplicationController
-	load_resource param_method: :post_params_permitted
-	authorize_resource :only => [:new, :create, :edit, :update, :destroy]
-	def index
-		@posts = Post.all
-	end
+  authorize_resource except: [:index, :show]
+  load_resource param_method: :post_params_permitted, except: :index
 
-	def new
-		@post = Post.new
-		render('new_post_form')
-	end
+  def index
+    @posts = Post.all
+  end
 
-	def create
-		@post = current_user.posts.new(post_params_permitted)
-		@post.save ? redirect_to(@post) : render('new_post_form')
-	end
+  def new
+    render('new_post_form')
+  end
 
-	def show
-		@post = Post.find(params[:id])
-		@comment = Comment.new
-	end
+  def create
+    @post = current_user.posts.new(post_params_permitted)
+    @post.save ? redirect_to(@post) : render('new_post_form')
+  end
 
-	def edit
-		@post = Post.find(params[:id])
-		render('edit_post_form')
-	end
+  def show
+    @comment = Comment.new
+  end
 
-	def update
-		@post = Post.find(params[:id])
-		@post.update(post_params_permitted) ? redirect_to(@post) : render('edit_post_form')
-	end
+  def edit
+    render('edit_post_form')
+  end
 
-	def destroy
-		@post = Post.find(params[:id])
-		@post.destroy
-		redirect_to(posts_url)
-	end
+  def update
+    @post.update(post_params_permitted) ? redirect_to(@post) : render('edit_post_form')
+  end
 
-	private
-	def post_params_permitted
-		params.require(:post).permit(:title, :content, :datetime)
-	end
+  def destroy
+    @post.destroy
+    redirect_to(posts_url)
+  end
+
+  private
+  def post_params_permitted
+    params.require(:post).permit(:title, :content, :datetime)
+  end
 end
