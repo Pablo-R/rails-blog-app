@@ -3,10 +3,7 @@ class Ability
 
   def initialize(user)
     user ||= User.new #guest user, not logged in    
-    if user.admin?
-        can :manage, :all
-    elsif user.persisted?
-        can :destroy, Comment
-    end
+    can :manage, :all if user.role == 'Admin'
+    can :destroy, Comment if user.role == 'Moderator'
   end
 end
