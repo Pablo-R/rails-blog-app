@@ -8,7 +8,8 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
-
+# Use taggable to add tags to posts
+gem 'acts-as-taggable-on', '~> 4.0'
 # Use Devise to control user-authentication
 gem 'devise', '~> 4.3.0'
 # Use Cancancan to control user-authorization
