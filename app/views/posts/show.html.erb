@@ -12,6 +12,10 @@
   <strong>Date:</strong>
   <%= @post.datetime %>
 </p>
+<p>
+  <strong>Tags:</strong>
+  <%= @post.tag_list %>
+</p>
 
 <h2>Comments</h2>
 <% @post.comments.each do |post_comment| %>

@@ -9,22 +9,24 @@
 <h2>Post List</h2>
 
 <table>
-	<tr>
-		<th>Title</th>
-		<th>Content</th>
-		<th>Date</th>
-	</tr>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Date</th>
+    <th>Tags</th>
+  </tr>
  
-	<% @posts.each do |post| %>
-		<tr>
-			<td><%= post.title %></td>
-			<td><%= post.content %></td>
-			<td><%= post.datetime %></td>
-			<td><%= link_to 'Show', post_path(post) %></td>
-			<td><%= link_to 'Edit', edit_post_path(post) if can? :edit, @post %></td>
-			<td><%= link_to('Delete', post_path(post), method: :delete, data: {confirm: 'Are you sure?'}) if can? :destroy, @post %></td>
-		</tr>
-	<% end %>
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.title %></td>
+      <td><%= post.content %></td>
+      <td><%= post.datetime %></td>
+      <td><%= post.tag_list %></td>
+      <td><%= link_to 'Show', post_path(post) %></td>
+      <td><%= link_to 'Edit', edit_post_path(post) if can? :edit, @post %></td>
+      <td><%= link_to('Delete', post_path(post), method: :delete, data: {confirm: 'Are you sure?'}) if can? :destroy, @post %></td>
+    </tr>
+  <% end %>
 </table>
 
 <%= link_to 'Back', root_path %>
