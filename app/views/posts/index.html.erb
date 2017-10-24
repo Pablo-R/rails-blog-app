@@ -1,10 +1,11 @@
 <h1>Blog App</h1>
 
-<%= link_to('Create a new post', new_post_path) if can? :create, @post %>
-
-<br>
-<%= link_to('Sign out', destroy_user_session_path , method: :delete ) if user_signed_in? %>
-<br>
+<h2>Search Posts</h2> 
+<p>By title or by tag:</p>
+<%= form_with(model: @post, local: true, method: :GET) do %>
+  <%= text_field_tag :term, params[:term] %>
+  <%= submit_tag 'Search', name: nil %>
+<% end %>
 
 <h2>Post List</h2>
 
@@ -30,3 +31,7 @@
 </table>
 
 <%= link_to 'Back', root_path %>
+<br>
+<%= link_to('Create a new post', new_post_path) if can? :create, @post %>
+<br>
+<%= link_to('Sign out', destroy_user_session_path , method: :delete ) if user_signed_in? %>

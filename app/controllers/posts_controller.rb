@@ -3,8 +3,10 @@ class PostsController < ApplicationController
   load_resource param_method: :post_params_permitted, except: :index
 
   def index
-    @posts = (params[:tag].present?) ? Post.tagged_with(params[:tag]) : Post.all
-  end
+    @posts = Post.all
+    @posts = @posts.search_by_title_or_by_tag(params[:term]) if params[:term].present?
+    @posts = @posts.tagged_with(params[:tag]) if params[:tag].present?
+ end
 
   def new
     render('new_post_form')
