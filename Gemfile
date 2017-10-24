@@ -9,7 +9,9 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use taggable to add tags to posts
-gem 'acts-as-taggable-on', '~> 4.0'
+# TODO: remove once new stable version > 4.0 is released
+# https://rubygems.org/gems/acts-as-taggable-on
+gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
 # Use Devise to control user-authentication
 gem 'devise', '~> 4.3.0'
 # Use Cancancan to control user-authorization

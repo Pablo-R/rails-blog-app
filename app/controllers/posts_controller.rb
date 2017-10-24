@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   load_resource param_method: :post_params_permitted, except: :index
 
   def index
-    @posts = Post.all
+    @posts = (params[:tag].present?) ? Post.tagged_with(params[:tag]) : Post.all
   end
 
   def new
