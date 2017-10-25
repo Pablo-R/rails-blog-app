@@ -1,16 +1,21 @@
 class CommentsController < ApplicationController
 	authorize_resource only: :destroy
+	before_action :find_post
+
 	def create
-		@post = Post.find(params[:post_id])
 		@comment = @post.comments.create(comment_params_permitted)
 		redirect_to(@post)
 	end
 
 	def destroy
-		@post = Post.find(params[:post_id])
 		@comment = @post.comments.find(params[:id])
 		@comment.destroy
 		redirect_to(@post)
+	end
+
+	private
+	def find_post
+		@post = Post.find(params[:post_id])
 	end
 
 	private
